@@ -28,7 +28,6 @@ class CrisplyApi
   end
   
   def self.post(uri, key, xml)
-    puts "#{xml}"
     ## Remainder: Way too much shit happening!!! 
     url = URI.parse uri
     http = Net::HTTP.new(url.host, url.port)
@@ -37,7 +36,8 @@ class CrisplyApi
     request = Net::HTTP::Post.new(url.path)
     CrisplyApi.headers.each { |key, value| request.add_field(key, value) }
     request.add_field("X-Crisply-Authentication", key)
-    request.set_form_data({'xml' => xml}, ';')
+    request.content_type = 'text/xml'
+    request.body = xml
     response = http.start {|http| http.request(request) }
   end
   

@@ -13,16 +13,13 @@ class Service::Crisply < Service
      :project => project, 
      :text => text,
      :date => date
+     # :author => account
    })
-    puts response.methods
-    puts response.body
-    # if response. < 200 || response.status > 299
-    #   raise_config_error
-    # end
+    if Integer(response.code) < 200 || Integer(response.code) > 299
+      raise_config_error
+    end
   end
-  
-  
-  
+
   def data_empty?
     if account.empty? 
       raise_config_error "Needs a username: https://<UserName>.crisply.com/"    

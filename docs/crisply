@@ -1,0 +1,14 @@
+Install Notes
+-------------
+
+Provide:
+	Account: is the subdomain of crisply.com UserName.crisply.com
+		data[:username]
+	Token: API Key: http://support.crisply.com/customer/portal/articles/250733-overview
+		data[:api_key]
+	Project: Name of the project
+		data[:project]
+    
+	
+
+  
